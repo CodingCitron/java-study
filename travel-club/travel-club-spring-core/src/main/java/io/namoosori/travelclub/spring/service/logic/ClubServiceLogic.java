@@ -6,9 +6,11 @@ import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import io.namoosori.travelclub.spring.shared.NameValueList;
 import io.namoosori.travelclub.spring.store.ClubStore;
 import io.namoosori.travelclub.spring.store.mapstore.ClubMapStore;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("clubService")
 public class ClubServiceLogic implements ClubService {
 
     /* IOC 컨테이너를 사용하지 않은 방법 */
@@ -35,7 +37,9 @@ public class ClubServiceLogic implements ClubService {
 
     @Override
     public String registerClub(TravelClubCdo club) {
-        return null;
+        TravelClub newClub = new TravelClub(club.getName(), club.getIntro());
+        newClub.checkValidation();
+        return clubStore.create(newClub);
     }
 
     @Override
