@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
+import java.util.Date;
 
 /* 테스트를 위한 클래스 */
 public class TravelClubApp {
@@ -23,6 +24,10 @@ public class TravelClubApp {
         ClubService clubService = context.getBean("clubService", ClubService.class);
 
         String clubId = clubService.registerClub(clubCdo);
-        System.out.println("ID: " + clubId);
+
+        TravelClub foundedClub = clubService.findClubById(clubId);
+        System.out.println("Club name: " + foundedClub.getName());
+        System.out.println("Club intro: " + foundedClub.getIntro());
+        System.out.println("Club foundationTime: " + new Date(foundedClub.getFoundationTime()));
     }
 }
