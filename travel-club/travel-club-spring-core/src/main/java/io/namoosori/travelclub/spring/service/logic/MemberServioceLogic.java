@@ -4,14 +4,23 @@ import io.namoosori.travelclub.spring.aggregate.club.CommunityMember;
 import io.namoosori.travelclub.spring.service.MemberService;
 import io.namoosori.travelclub.spring.service.sdo.MemberCdo;
 import io.namoosori.travelclub.spring.shared.NameValueList;
+import io.namoosori.travelclub.spring.store.MemberStore;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("memberService")
 public class MemberServioceLogic implements MemberService {
+
+    private MemberStore memberStore;
+
+    public MemberServioceLogic(MemberStore memberStore) {
+        this.memberStore = memberStore;
+    }
+
     @Override
     public String registerMember(MemberCdo member) {
+
         return null;
     }
 
