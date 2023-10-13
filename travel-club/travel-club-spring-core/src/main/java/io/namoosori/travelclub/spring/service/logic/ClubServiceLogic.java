@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("clubService")
+@Service("clubServiceLogic")
 public class ClubServiceLogic implements ClubService {
 
     /* IOC 컨테이너를 사용하지 않은 방법 */
