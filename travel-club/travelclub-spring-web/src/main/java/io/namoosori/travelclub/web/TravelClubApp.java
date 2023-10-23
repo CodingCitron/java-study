@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TravelClubApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(TravelClubApp.class);
+        SpringApplication.run(TravelClubApp.class, args);
     }
 }
