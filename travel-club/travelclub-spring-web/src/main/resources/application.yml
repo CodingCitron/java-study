@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 7080
 
 spring:
   h2:
@@ -8,10 +8,10 @@ spring:
       path: /h2-console # h2 웹 패스
 
   datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password: # 공백이면 비밀번호 없음
     driver-class-name: org.h2.Driver # 데이터베이스 프로그램 회사마다 이름이 다름
-    url: jdbc:h2:mem:mydb
-#    username: sa
-#    password: # 공백이면 비밀번호 없음
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect # 데이터베이스마다 쿼리가 조금씩 다름 특정 데이터베이스를 적용하는 설정
