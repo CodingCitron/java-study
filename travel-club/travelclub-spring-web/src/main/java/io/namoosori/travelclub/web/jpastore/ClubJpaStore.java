@@ -39,28 +39,29 @@ public class ClubJpaStore implements ClubStore {
 
     @Override
     public List<TravelClub> retrieveByName(String name) {
+        List<TravelClubJpo> clubJpos = clubRepository.findAllByName(name);
+        return  clubJpos.stream().map(TravelClubJpo::toDomain).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TravelClub> retrieveAll() {
         List<TravelClubJpo> clubJpos = clubRepository.findAll();
 //        return clubJpos.stream().map(clubJpo -> clubJpo.toDomain()).collect(Collectors.toList());
         return clubJpos.stream().map(TravelClubJpo::toDomain).collect(Collectors.toList());
     }
 
     @Override
-    public List<TravelClub> retrieveAll() {
-        return null;
-    }
-
-    @Override
     public void update(TravelClub club) {
-
+        clubRepository.save(new TravelClubJpo(club));
     }
 
     @Override
     public void delete(String clubId) {
-
+        clubRepository.deleteById(clubId);
     }
 
     @Override
     public boolean exists(String clubId) {
-        return false;
+        return clubRepository.existsById(clubId);
     }
 }
